@@ -1,4 +1,4 @@
-import Foundation.Progress
+import Foundation
 
 private func _when<T>(_ promises: [Promise<T>]) -> Promise<Void> {
     let root = Promise<Void>.pending()
