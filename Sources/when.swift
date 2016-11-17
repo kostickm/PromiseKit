@@ -1,4 +1,4 @@
-import Foundation.NSProgress
+import Foundation.Progress
 
 private func _when<T>(_ promises: [Promise<T>]) -> Promise<Void> {
     let root = Promise<Void>.pending()
@@ -63,7 +63,7 @@ private func _when<T>(_ promises: [Promise<T>]) -> Promise<Void> {
  - Warning: In the event of rejection the other promises will continue to resolve and, as per any other promise, will either fulfill or reject. This is the right pattern for `getter` style asynchronous tasks, but often for `setter` tasks (eg. storing data on a server), you most likely will need to wait on all tasks and then act based on which have succeeded and which have failed, in such situations use `when(resolved:)`.
  - Parameter promises: The promises upon which to wait before the returned promise resolves.
  - Returns: A new promise that resolves when all the provided promises fulfill or one of the provided promises rejects.
- - Note: `when` provides `NSProgress`.
+ - Note: `when` provides `Progress`.
  - SeeAlso: `when(resolved:)`
 */
 public func when<T>(fulfilled promises: [Promise<T>]) -> Promise<[T]> {
