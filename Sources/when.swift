@@ -15,14 +15,14 @@ private func _when<T>(_ promises: [Promise<T>]) -> Promise<Void> {
 
 #if !PMKDisableProgress
 #if os(Linux)
-    let progress = NSProgress(totalUnitCount: Int64(promises.count))
-    progress.cancellable = false
-    progress.pausable = false
-#else
     let progress = Progress(totalUnitCount: Int64(promises.count))
     progress.isCancellable = false
     progress.isPausable = false
-#endif //Linux
+#else
+    let progress = NSProgress(totalUnitCount: Int64(promises.count))
+    progress.cancellable = false
+    progress.pausable = false
+#endif //Mac OSX
 #else
     var progress: (completedUnitCount: Int, totalUnitCount: Int) = (0, 0)
 #endif
